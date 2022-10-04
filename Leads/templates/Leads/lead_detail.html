@@ -1,0 +1,52 @@
+{% extends 'Leads/base.html' %}
+{% block content %}
+<section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-full w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-4 text-center font">Lead {{lead_detail.first_name}} {{lead_detail.last_name}} Details</h1>
+          <div class="flex mb-4 ">
+            <a  href= "{% url 'lead_detail' pk=lead_detail.pk %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1 font2">Description</a>
+            <a  href="{% url 'category_update' pk=lead_detail.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 font2">Category</a>
+            <a href="{% url 'lead_update' pk=lead_detail.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1 font2">Update Lead</a>
+          </div>
+          <p class="leading-relaxed mb-4 font3">{{lead_detail.description}}</p>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">First Name</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.first_name}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Last Name</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.last_name}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Email</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.email}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Age</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.age}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Location</span>
+            <span class="ml-auto text-gray-900 font3">USA Los Angelis</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Cell Phone</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.phone_number}}</span>
+          </div>
+          <div class="flex border-t border-gray-200 py-2">
+            <span class="font">Date Joined</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.date_joined|date:'F j, Y'}}.</span>
+          </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+            <span class="font">Responsible Agent</span>
+            <span class="ml-auto text-gray-900 font3">{{lead_detail.agent_lead.user_agent.first_name}}</span>
+          </div>
+          <div class="flex"><a href="{% url 'lead_list' %}" class="text-white w-full bg-blue-500 hover:bg-blue-600 px-5 py-2 mt-3 font rounded-md text-center">Back</a></div>
+        </div>
+   
+      </div>
+    </div>
+  </section>
+{% endblock content %}

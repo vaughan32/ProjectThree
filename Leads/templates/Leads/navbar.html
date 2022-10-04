@@ -1,0 +1,31 @@
+<header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <span class="ml-3 font">CRM</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          {% if user.is_authenticated %}
+            <a href="{% url 'landing_page' %}" class="mr-5 font">Home</a>
+            <a href="{% url 'lead_list' %}" class="mr-5 font">Leads</a>
+            {% if request.user.is_orgarnizer %}
+            <a href="{% url 'agent_list' %}" class="mr-5 font">Agents</a>
+            {% endif %}
+            <a href="{% url 'category_list' %}" class="mr-5 font">Category</a>
+            <a href="{% url 'logout' %}" class="mr-5 font">LogOut</a>
+            <span class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 font">{{user.email}}
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </span>
+            {% else %}
+            <a href="{% url 'landing_page' %}" class="mr-5 font">Home</a>
+            <a href="{% url 'login' %}" class="mr-5 font">Login</a>
+          <a href="{% url 'register' %}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 font">Register
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+      {% endif %}
+    </nav>
+    </div>
+</header>
