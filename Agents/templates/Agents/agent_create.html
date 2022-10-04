@@ -1,0 +1,18 @@
+{% extends 'Leads/base.html' %}
+{% load tailwind_filters %}
+{% block content %}
+<br>
+<div class="max-w-lg mx-auto">
+    <h4 class="font text-center">Create A Agent</h4>
+    <br>
+            <div class="lead">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button type="submit" class="text-white w-full bg-blue-500 hover:bg-blue-600 px-5 py-2 mt-3 font rounded-md">
+                        Submit
+                    </button>
+                </form>
+            </div>
+{% endblock content %}
+</div>
